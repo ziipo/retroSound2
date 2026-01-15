@@ -27,6 +27,19 @@ function App() {
     await loadFile(file);
   };
 
+  const handleLoadDemo = async () => {
+    try {
+      // Load a demo audio file from a public URL
+      const response = await fetch('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+      const blob = await response.blob();
+      const file = new File([blob], 'demo.mp3', { type: 'audio/mpeg' });
+      await loadFile(file);
+    } catch (error) {
+      console.error('Failed to load demo track:', error);
+      alert('Failed to load demo track. Please try uploading your own audio file.');
+    }
+  };
+
   const handlePresetSelect = async (preset: PresetConfig) => {
     // Load crackle file
     await loadCrackle(preset.crackleFile);
@@ -53,7 +66,7 @@ function App() {
 
       <main style={styles.main}>
         {!isLoaded ? (
-          <AudioUploader onFileSelect={handleFileSelect} />
+          <AudioUploader onFileSelect={handleFileSelect} onLoadDemo={handleLoadDemo} />
         ) : (
           <div style={styles.content}>
             {/* Left Column: Presets & Controls */}

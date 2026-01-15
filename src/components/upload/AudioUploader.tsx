@@ -2,9 +2,10 @@ import React, { useRef, useState } from 'react';
 
 interface AudioUploaderProps {
   onFileSelect: (file: File) => void;
+  onLoadDemo?: () => void;
 }
 
-export const AudioUploader: React.FC<AudioUploaderProps> = ({ onFileSelect }) => {
+export const AudioUploader: React.FC<AudioUploaderProps> = ({ onFileSelect, onLoadDemo }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -40,42 +41,64 @@ export const AudioUploader: React.FC<AudioUploaderProps> = ({ onFileSelect }) =>
   };
 
   return (
-    <div
-      className="art-deco-panel"
-      style={{
-        ...styles.dropzone,
-        borderColor: isDragging ? 'var(--gold-light)' : 'var(--gold-primary)',
-        boxShadow: isDragging ? 'var(--shadow-gold-strong)' : 'none'
-      }}
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
-      onDrop={handleDrop}
-      onClick={() => fileInputRef.current?.click()}
-    >
-      <input
-        ref={fileInputRef}
-        type="file"
-        accept="audio/*"
-        onChange={handleFileChange}
-        style={styles.hiddenInput}
-      />
+    <div style={styles.container}>
+      <div
+        className="art-deco-panel"
+        style={{
+          ...styles.dropzone,
+          borderColor: isDragging ? 'var(--gold-light)' : 'var(--gold-primary)',
+          boxShadow: isDragging ? 'var(--shadow-gold-strong)' : 'none'
+        }}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+        onClick={() => fileInputRef.current?.click()}
+      >
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="audio/*"
+          onChange={handleFileChange}
+          style={styles.hiddenInput}
+        />
 
-      <div style={styles.content}>
-        <div style={styles.icon}>🎵</div>
-        <h2 style={styles.title} className="gold-gradient-text">
-          DROP AUDIO FILE
-        </h2>
-        <p style={styles.subtitle}>or click to browse</p>
-        <p style={styles.formats}>MP3, WAV, OGG, FLAC, M4A</p>
+        <div style={styles.content}>
+          <div style={styles.icon}>🎵</div>
+          <h2 style={styles.title} className="gold-gradient-text">
+            DROP AUDIO FILE
+          </h2>
+          <p style={styles.subtitle}>or click to browse</p>
+          <p style={styles.formats}>MP3, WAV, OGG, FLAC, M4A</p>
+        </div>
       </div>
+
+      {onLoadDemo && (
+        <div style={styles.demoContainer}>
+          <div className="gold-divider"></div>
+          <button
+            className="art-deco-button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onLoadDemo();
+            }}
+            style={styles.demoButton}
+          >
+            🎧 LOAD DEMO TRACK
+          </button>
+          <p style={styles.demoText}>Try the effects with a sample audio file</p>
+        </div>
+      )}
     </div>
   );
 };
 
 const styles: Record<string, React.CSSProperties> = {
-  dropzone: {
+  container: {
     maxWidth: '600px',
-    margin: 'var(--space-3xl) auto',
+    margin: '0 auto'
+  },
+  dropzone: {
+    marginTop: 'var(--space-3xl)',
     padding: 'var(--space-3xl)',
     textAlign: 'center',
     cursor: 'pointer',
@@ -112,5 +135,18 @@ const styles: Record<string, React.CSSProperties> = {
     fontSize: '0.75rem',
     letterSpacing: '0.1rem',
     marginTop: 'var(--space-md)'
+  },
+  demoContainer: {
+    marginTop: 'var(--space-xl)',
+    textAlign: 'center'
+  },
+  demoButton: {
+    marginTop: 'var(--space-lg)',
+    marginBottom: 'var(--space-md)'
+  },
+  demoText: {
+    color: 'var(--cream-dim)',
+    fontSize: '0.875rem',
+    fontStyle: 'italic'
   }
 };

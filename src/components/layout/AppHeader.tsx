@@ -8,7 +8,7 @@ export const AppHeader: React.FC = () => {
 
       <div style={styles.titleContainer}>
         <img
-          src="/phonoIcon.svg"
+          src={`${import.meta.env.BASE_URL}phonoIcon.svg`}
           alt="Phonograph"
           style={styles.iconLeft}
         />
@@ -21,7 +21,7 @@ export const AppHeader: React.FC = () => {
         </div>
 
         <img
-          src="/phonoIcon.svg"
+          src={`${import.meta.env.BASE_URL}phonoIcon.svg`}
           alt="Phonograph"
           style={styles.iconRight}
         />
