@@ -29,14 +29,17 @@ function App() {
 
   const handleLoadDemo = async () => {
     try {
-      // Load a demo audio file from a public URL
-      const response = await fetch('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+      // Load a demo audio file from the public directory
+      const response = await fetch(`${import.meta.env.BASE_URL}demo.mp3`);
+      if (!response.ok) {
+        throw new Error('Demo file not found');
+      }
       const blob = await response.blob();
       const file = new File([blob], 'demo.mp3', { type: 'audio/mpeg' });
       await loadFile(file);
     } catch (error) {
       console.error('Failed to load demo track:', error);
-      alert('Failed to load demo track. Please try uploading your own audio file.');
+      alert('Demo track not available. Please upload your own audio file.');
     }
   };
 

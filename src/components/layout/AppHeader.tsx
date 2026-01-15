@@ -49,14 +49,16 @@ const styles: Record<string, React.CSSProperties> = {
     alignItems: 'center'
   },
   iconLeft: {
-    height: '80px',
-    width: 'auto',
+    height: '60px',
+    maxWidth: '60px',
+    objectFit: 'contain',
     filter: 'invert(77%) sepia(58%) saturate(434%) hue-rotate(3deg) brightness(91%) contrast(87%)',
     opacity: 0.9
   },
   iconRight: {
-    height: '80px',
-    width: 'auto',
+    height: '60px',
+    maxWidth: '60px',
+    objectFit: 'contain',
     filter: 'invert(77%) sepia(58%) saturate(434%) hue-rotate(3deg) brightness(91%) contrast(87%)',
     opacity: 0.9,
     transform: 'scaleX(-1)' // Mirror horizontally
