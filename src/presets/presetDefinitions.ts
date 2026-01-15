@@ -7,7 +7,7 @@ import type { PresetConfig, EffectParameters } from '../types/audio.types';
 export const PRESETS: PresetConfig[] = [
   {
     id: 'untouched',
-    name: 'Untouched Tracks',
+    name: 'Original',
     description: 'Pristine vinyl with minimal aging',
     crackleFile: 'crackle01.wav',
     params: {
@@ -27,7 +27,7 @@ export const PRESETS: PresetConfig[] = [
   },
   {
     id: 'mellow-vintage',
-    name: 'Mellow Vintage',
+    name: 'Warm Vintage',
     description: 'Warm, well-preserved record',
     crackleFile: 'crackle13.wav',
     params: {
@@ -47,7 +47,7 @@ export const PRESETS: PresetConfig[] = [
   },
   {
     id: 'dusty-basement',
-    name: 'Dusty Basement Archive',
+    name: 'Worn and aged',
     description: 'Heavy wear and surface noise',
     crackleFile: 'crackle21.wav',
     params: {
@@ -67,7 +67,7 @@ export const PRESETS: PresetConfig[] = [
   },
   {
     id: 'midnight-jazz',
-    name: 'Midnight Jazz Vinyl',
+    name: 'Jazz Club',
     description: 'Smoky jazz club atmosphere',
     crackleFile: 'crackle09.wav',
     params: {
@@ -87,7 +87,7 @@ export const PRESETS: PresetConfig[] = [
   },
   {
     id: 'parlor-melodies',
-    name: 'Parlor Melodies',
+    name: 'Early Phonograph',
     description: 'Early 1900s phonograph character',
     crackleFile: 'crackle17.wav',
     params: {
@@ -107,7 +107,7 @@ export const PRESETS: PresetConfig[] = [
   },
   {
     id: 'experimental',
-    name: 'Experimental Transmission',
+    name: 'Super LoFi',
     description: 'Heavily degraded, lo-fi character',
     crackleFile: 'crackle23.wav',
     params: {
@@ -127,7 +127,7 @@ export const PRESETS: PresetConfig[] = [
   },
   {
     id: 'greenwich-loft',
-    name: 'Greenwich Village Loft',
+    name: 'Vintage Folk',
     description: 'Vintage folk recording aesthetic',
     crackleFile: 'crackle05.wav',
     params: {
@@ -147,7 +147,7 @@ export const PRESETS: PresetConfig[] = [
   },
   {
     id: 'los-pamperos',
-    name: 'Los Pamperos',
+    name: 'Latin Spin',
     description: 'South American vinyl archive',
     crackleFile: 'crackle11.wav',
     params: {
@@ -167,7 +167,7 @@ export const PRESETS: PresetConfig[] = [
   },
   {
     id: 'vinyl-erosion',
-    name: 'Vinyl Erosion',
+    name: 'Max Deterioration',
     description: 'Maximum deterioration and character',
     crackleFile: 'crackle19.wav',
     params: {
@@ -195,7 +195,7 @@ export const getPresetById = (id: string): PresetConfig | undefined => {
 };
 
 /**
- * Get default effect parameters (Untouched Tracks)
+ * Get default effect parameters (Original)
  */
 export const getDefaultParameters = (): EffectParameters => {
   return { ...PRESETS[0].params };

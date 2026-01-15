@@ -4,7 +4,7 @@ A web-based audio effects processor that recreates the authentic sound of vintag
 
 ## Features
 
-### 🎵 12 Audio Effects (Reverse-Engineered from Patina)
+### 🎵 12 Audio Effects
 
 - **Surface Damage** - Random dropouts simulating scratched vinyl
 - **Deterioration** - Overall degradation of the record
@@ -21,15 +21,15 @@ A web-based audio effects processor that recreates the authentic sound of vintag
 
 ### 🎨 9 Curated Presets
 
-1. **Untouched Tracks** - Pristine vinyl
-2. **Mellow Vintage** - Warm, well-preserved
-3. **Dusty Basement Archive** - Heavy wear
-4. **Midnight Jazz Vinyl** - Smoky jazz club atmosphere
-5. **Parlor Melodies** - Early 1900s phonograph
-6. **Experimental Transmission** - Lo-fi degradation
-7. **Greenwich Village Loft** - Vintage folk aesthetic
-8. **Los Pamperos** - South American archive
-9. **Vinyl Erosion** - Maximum deterioration
+1. **Original** - Pristine vinyl
+2. **Warm Vintage** - Warm, well-preserved
+3. **Worn and aged** - Heavy wear
+4. **Jazz Club** - Smoky jazz club atmosphere
+5. **Early Phonograph** - Early 1900s phonograph
+6. **Super LoFi** - Lo-fi degradation
+7. **Vintage Folk** - Vintage folk aesthetic
+8. **Latin Spin** - South American archive
+9. **Max Deterioration** - Maximum deterioration
 
 ### 🎛️ Additional Features
 
@@ -43,7 +43,7 @@ A web-based audio effects processor that recreates the authentic sound of vintag
 
 ### Audio Processing Architecture
 
-All audio effects use the **Web Audio API** with exact algorithms reverse-engineered from the Patina vinyl simulator:
+All audio effects use the **Web Audio API**:
 
 ```
 Source → Stereo Balance → Vinyl Damage → RIAA → Age Filter →
@@ -60,7 +60,7 @@ Inner Groove → Spindle Eccentricity → Master → Output
 - **Web Audio API** for real-time audio processing
 - **Zero external audio libraries** - pure Web Audio implementation
 
-### Effect Specifications (from Patina)
+### Effect Specifications
 
 **RIAA De-emphasis Filter:**
 - Low shelf @ 50.05Hz: +17dB
@@ -126,27 +126,15 @@ src/
 
 ### Exact Algorithm Reproduction
 
-All effects are reverse-engineered from the original Patina implementation:
-
 - **Filter frequencies** match exactly (50.05Hz, 500.5Hz, 2122Hz for RIAA)
 - **LFO rates** replicate the original (0.13Hz, 0.27Hz for age filter modulation)
 - **Preset parameters** extracted from the original site
-- **Effect chain order** follows Patina's signal flow
+- **Effect chain order** follows specific signal flow
 - **Crackle system** uses 24 sound variations from the original
 
 ### Web Audio Graph
 
 Each effect is a class extending `AudioEffect` with `input` and `output` gain nodes. The `AudioEngine` orchestrates the entire chain, managing playback, parameter updates, and export.
-
-## Credits
-
-- Audio processing algorithms reverse-engineered from [Patina by Minta Foundry](https://www.mintafoundry.com/patina)
-- Crackle sound files provided by user
-- UI design: Custom Art Deco aesthetic
-
-## License
-
-MIT License - See LICENSE file for details
 
 ---
 
