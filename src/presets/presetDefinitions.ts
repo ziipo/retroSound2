@@ -195,8 +195,8 @@ export const getPresetById = (id: string): PresetConfig | undefined => {
 };
 
 /**
- * Get default effect parameters (Original)
+ * Get default effect parameters (Warm Vintage)
  */
 export const getDefaultParameters = (): EffectParameters => {
-  return { ...PRESETS[0].params };
+  return { ...PRESETS[1].params };
 };
