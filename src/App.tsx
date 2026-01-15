@@ -87,7 +87,10 @@ function App() {
                   onStop={stop}
                 />
 
-                <PresetSelector onSelectPreset={handlePresetSelect} />
+                <PresetSelector
+                  selectedPresetId={selectedPresetId}
+                  onSelectPreset={handlePresetSelect}
+                />
 
                 <button
                   className="art-deco-button"

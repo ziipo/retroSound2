@@ -3,15 +3,13 @@ import { PRESETS } from '../../presets/presetDefinitions';
 import type { PresetConfig } from '../../types/audio.types';
 
 interface PresetSelectorProps {
+  selectedPresetId?: string;
   onSelectPreset: (preset: PresetConfig) => void;
 }
 
-export const PresetSelector: React.FC<PresetSelectorProps> = ({ onSelectPreset }) => {
-  const [selectedId, setSelectedId] = React.useState<string>('');
-
+export const PresetSelector: React.FC<PresetSelectorProps> = ({ selectedPresetId = '', onSelectPreset }) => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const presetId = event.target.value;
-    setSelectedId(presetId);
 
     const preset = PRESETS.find(p => p.id === presetId);
     if (preset) {
@@ -23,7 +21,7 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({ onSelectPreset }
     <div style={styles.container}>
       <label style={styles.label}>PRESET</label>
       <select
-        value={selectedId}
+        value={selectedPresetId}
         onChange={handleChange}
         style={styles.select}
         className="art-deco-select"
