@@ -23,6 +23,8 @@ function App() {
     exportWAV
   } = useAudioEngine();
 
+  const [selectedPresetId, setSelectedPresetId] = React.useState<string>('mellow-vintage');
+
   const handleFileSelect = async (file: File) => {
     await loadFile(file);
   };
@@ -44,6 +46,9 @@ function App() {
   };
 
   const handlePresetSelect = async (preset: PresetConfig) => {
+    // Update selected preset ID
+    setSelectedPresetId(preset.id);
+
     // Load crackle file
     await loadCrackle(preset.crackleFile);
 
