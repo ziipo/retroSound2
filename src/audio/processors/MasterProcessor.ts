@@ -11,7 +11,7 @@ import { MasteringMode, MasteringConfig } from '../../types/audio.types';
  * - Abbey Road: threshold -22.5dB, ratio 1.3
  */
 export class MasterProcessor {
-  private context: AudioContext;
+  private _context: AudioContext;
   public input: GainNode;
   public output: GainNode;
 
@@ -47,7 +47,7 @@ export class MasterProcessor {
   };
 
   constructor(context: AudioContext) {
-    this.context = context; // Store context for future use
+    this._context = context; // Store context for future use
     this.input = context.createGain();
     this.output = context.createGain();
 
