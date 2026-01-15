@@ -11,7 +11,6 @@ import { MasteringMode, MasteringConfig } from '../../types/audio.types';
  * - Abbey Road: threshold -22.5dB, ratio 1.3
  */
 export class MasterProcessor {
-  private context: AudioContext;
   public input: GainNode;
   public output: GainNode;
 

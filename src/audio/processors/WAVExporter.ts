@@ -1,5 +1,4 @@
 import { bufferToWave, trimBuffer } from '../utils/bufferUtils';
-import type { EffectParameters } from '../../types/audio.types';
 
 /**
  * WAV Exporter

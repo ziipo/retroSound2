@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { AppHeader } from './components/layout/AppHeader';
 import { AudioUploader } from './components/upload/AudioUploader';
 import { PlaybackControls } from './components/controls/PlaybackControls';

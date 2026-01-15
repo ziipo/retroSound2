@@ -5,8 +5,6 @@ import { AudioEffect } from '../core/AudioEffect';
  * Optional stereo field processing
  */
 export class StereoBalanceEffect extends AudioEffect {
-  private enabled = false;
-
   constructor(context: AudioContext) {
     super(context);
 
@@ -15,10 +13,9 @@ export class StereoBalanceEffect extends AudioEffect {
     this.input.connect(this.output);
   }
 
-  setParameter(name: string, value: number): void {
-    if (name === 'enabled' || name === 'sbc') {
-      this.enabled = value > 0.5;
-    }
+  setParameter(_name: string, _value: number): void {
+    // Simple pass-through for now
+    // Can be expanded with channel splitting and delay if needed
   }
 
   destroy(): void {

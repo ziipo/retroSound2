@@ -64,7 +64,7 @@ export class InnerGrooveDistortion extends AudioEffect {
     this.compressor.ratio.value = 1 + (5 * this.amount);
   }
 
-  private createDistortionCurve(amount: number): Float32Array {
+  private createDistortionCurve(amount: number): Float32Array | null {
     const samples = 44100;
     const curve = new Float32Array(samples);
     const deg = Math.PI / 180;

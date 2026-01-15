@@ -303,7 +303,7 @@ export class AudioEngine {
   /**
    * Get current effect parameter value (for internal use)
    */
-  private getEffectParameter(effectId: string): number {
+  private getEffectParameter(_effectId: string): number {
     // This would need to track parameter values
     // For now, return a default
     return 0.5;

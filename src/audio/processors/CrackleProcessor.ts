@@ -14,7 +14,6 @@ export class CrackleProcessor {
   private crackleBuffers: Map<string, AudioBuffer> = new Map();
   private currentSource: AudioBufferSourceNode | null = null;
   private gainNode: GainNode;
-  private currentCrackleFile: string | null = null;
 
   public output: GainNode;
 
@@ -54,7 +53,6 @@ export class CrackleProcessor {
       return;
     }
 
-    this.currentCrackleFile = crackleFile;
     this.currentSource = this.context.createBufferSource();
     this.currentSource.buffer = buffer;
     this.currentSource.loop = true;
