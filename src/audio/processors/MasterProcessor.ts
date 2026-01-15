@@ -47,7 +47,7 @@ export class MasterProcessor {
   };
 
   constructor(context: AudioContext) {
-    this.context = context;
+    this.context = context; // Store context for future use
     this.input = context.createGain();
     this.output = context.createGain();
 

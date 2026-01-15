@@ -25,7 +25,7 @@ export class InnerGrooveDistortion extends AudioEffect {
 
     // Waveshaper for harmonic distortion
     this.waveshaper = context.createWaveShaper();
-    this.waveshaper.curve = this.createDistortionCurve(0) as Float32Array;
+    this.waveshaper.curve = this.createDistortionCurve(0);
     this.waveshaper.oversample = '2x';
 
     // Wet/dry mix
@@ -54,7 +54,7 @@ export class InnerGrooveDistortion extends AudioEffect {
 
   private updateEffect(): void {
     // Update distortion curve
-    this.waveshaper.curve = this.createDistortionCurve(this.amount * 50) as Float32Array;
+    this.waveshaper.curve = this.createDistortionCurve(this.amount * 50);
 
     // Wet/dry mix
     this.wetGain.gain.value = this.amount;
@@ -64,9 +64,10 @@ export class InnerGrooveDistortion extends AudioEffect {
     this.compressor.ratio.value = 1 + (5 * this.amount);
   }
 
-  private createDistortionCurve(amount: number): Float32Array | null {
+  private createDistortionCurve(amount: number): Float32Array<ArrayBuffer> | null {
     const samples = 44100;
-    const curve = new Float32Array(samples);
+    const buffer = new ArrayBuffer(samples * Float32Array.BYTES_PER_ELEMENT);
+    const curve = new Float32Array(buffer);
     const deg = Math.PI / 180;
 
     for (let i = 0; i < samples; i++) {
